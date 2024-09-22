@@ -1,12 +1,14 @@
 
-import java.util.Scanner;
+import java.io.*;
 
 public class Main {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int a = scanner.nextInt();
-        int b = scanner.nextInt();
-        int v = scanner.nextInt();
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        String[] input = br.readLine().split(" ");
+        int a = Integer.parseInt(input[0]);
+        int b = Integer.parseInt(input[1]);
+        int v = Integer.parseInt(input[2]);
 
         int distance = 0;
         int day = 0;
@@ -18,6 +20,9 @@ public class Main {
                 break;
             }
         }
-        System.out.println(day);
+        bw.write(day + "\n");
+        bw.flush();
+        bw.close();
+        br.close();
     }
 }
