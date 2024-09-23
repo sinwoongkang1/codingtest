@@ -6,27 +6,46 @@ public class No1286 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        int grade = Integer.parseInt(br.readLine());
-        int[][] arr = new int[grade][grade];
+        int numberOfStudents = Integer.parseInt(br.readLine());
+        int[][] arr = new int[numberOfStudents][5];
 
-        for (int i = 0; i < grade; i++) {
+        for (int i = 0; i < numberOfStudents; i++) {
             String[] str = br.readLine().split(" ");
-            for (int j = 0; j < grade; j++) {
+            for (int j = 0; j < 5; j++) {
                 arr[i][j] = Integer.parseInt(str[j]);
             }
         }
-        System.out.println(Arrays.toString(arr));
+        bw.write(findMax(findStudent(arr, numberOfStudents)) + "\n");
+        bw.flush();
+        bw.close();
+        br.close();
     }
-public static void findStudent(int[][] arr) {
-        int[] find = new int[5];
-        Arrays.fill(find, -5);
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 5; j++) {
-                if (arr[j][i] == arr[i][j]) {
-                    find[j]++;
+
+    public static int[] findStudent(int[][] arr, int numberOfStudents) {
+        int[] find = new int[numberOfStudents];
+        Arrays.fill(find, 0);
+
+        for (int j = 0; j < 5; j++) {
+            for (int k = 0; k < numberOfStudents; k++) {
+                for (int l = 0; l < numberOfStudents; l++) {
+                    if (arr[k][j] == arr[l][j]) {
+                        find[k]++;
+                    }
                 }
             }
         }
+        return find;
+    }
 
-}
+    public static int findMax(int[] arr) {
+        int max = arr[0];
+        int count = 0;
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] > max) {
+                max = arr[i];
+                count = i;
+            }
+        }
+        return count + 1;
+    }
 }
