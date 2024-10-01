@@ -10,7 +10,7 @@ public class No2745 {
         String[] input = br.readLine().split(" ");
         String str = input[0];
         int a = Integer.parseInt(input[1]);
-        int s ;
+        int s = 0;
         long sum = 0;
         int jisu = str.length()-1;
 
