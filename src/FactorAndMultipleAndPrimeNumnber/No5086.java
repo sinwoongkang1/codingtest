@@ -12,18 +12,16 @@ public class No5086 {
             int L = Integer.parseInt(input[1]);
             if (F < L && L % F == 0) {
                 bw.write("factor" + "\n");
-                bw.flush();
             } else if (F > L && F % L == 0) {
                 bw.write("multiple" + "\n");
-                bw.flush();
             } else if (F < L && L % F != 0 || F > L && F % L != 0) {
                 bw.write("neither" + "\n");
-                bw.flush();
             } else {
                 bw.close();
                 br.close();
                 return;
             }
+            bw.flush();
         }
     }
 }
